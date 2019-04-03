@@ -5,7 +5,7 @@ public class Player {
     private String name;
     private String description;
     private ArrayList<Item> items;
-    private Level.Room currentRoom;
+    private Room currentRoom;
 
     public Player(String name, String description) {
         this.name = name;
@@ -68,11 +68,11 @@ public class Player {
         }
     }
 
-    public Level.Room getCurrentRoom() {
+    public Room getCurrentRoom() {
         return this.currentRoom;
     }
 
-    public void setCurrentRoom(Level.Room newRoom) {
+    public void setCurrentRoom(Room newRoom) {
         this.currentRoom = newRoom;
     }
 

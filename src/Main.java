@@ -44,11 +44,12 @@ public class Main {
                 int firstQuote = response.indexOf("\"");
                 int secondQuote = response.indexOf("\"", firstQuote + 1);
                 name += response.substring(firstQuote + 1, secondQuote);
-                Level.Room nextRoom = player.getCurrentRoom().getNeighbor(name);
+                Room nextRoom = player.getCurrentRoom().getNeighbor(name);
                 if (nextRoom == null) {
                     System.out.println("That room does not exist. Please try again.");
                 } else {
                     System.out.println(nextRoom.getTravelMessage());
+
                     player.setCurrentRoom(nextRoom);
                 }
             } else if (words[0].equals("look")) {
