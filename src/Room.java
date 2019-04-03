@@ -80,12 +80,12 @@ public Room getNeighbor(String name) {
         return creatures;
     }
 
-    public void displayCreatures() {
-        System.out.println("Creatures in the room:");
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println("\t" + creatures.get(i).getName());
-        }
-    }
+//    public void displayCreatures() {
+//        System.out.println("Creatures in the room:");
+//        for (int i = 0; i < items.size(); i++) {
+//            System.out.println("\t" + creatures.get(i).getName());
+//        }
+//    }
 
 public ArrayList<Item> getItems() {
         return items;

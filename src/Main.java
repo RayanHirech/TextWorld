@@ -12,6 +12,7 @@ public class Main {
         level.addRoom("Salvation", "Your time in the ranch has led you to salvation.", "Your life is now better because of Dr. Phil. Your welcome.");
         level.addRoom("West Virginia", "You have been taken home, to the place you belong: West Virginia.", "One of the states in the US.");
         level.addRoom("Mountain Momma", "You take the country roads to Mountain Momma.", "West Virginia, but the redneck version.");
+        level.addRoom("", "", "");
 
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
