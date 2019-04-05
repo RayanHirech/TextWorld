@@ -13,6 +13,18 @@ public class Main {
         level.addRoom("West Virginia", "You have been taken home, to the place you belong: West Virginia.", "One of the states in the US.");
         level.addRoom("Mountain Momma", "You take the country roads to Mountain Momma.", "West Virginia, but the redneck version.");
         level.addRoom("McDonald's", "You decide to spite your health and go to McDonald's.", "I'm lovin' it.");
+        level.addRoom("Texas", "You took a wrong turn, and now you're in Texas.", "Everything is bigger in Texas.");
+        level.addRoom("Glue Factory", "You find a glue factory next to the ranch.", "So that's where the horses went...");
+        level.addRoom("Flex World", "Phil Swift grabs you by the hand and takes you to Flex World.", "A glue lover's wet dream.");
+        level.addRoom("NASA", "You go to NASA.", "Isn't NASA that government space thingy?");
+        level.addRoom("Florida", "For some reason, you decide to go to Florida. It was probably an accident, because there is no reason that anyone would want to go there.", "Home of the weird Americans.");
+        level.addRoom("California", "You get in a cramped car and head to California in hopes for a better life. Or maybe even some gold.", "The best state in the US. (Totally not biased.)"); //Tesla ==> Mars
+        level.addRoom("The Moon", "You find a space shuttle and take it to the moon.", "I think that stealing a space shuttle is a felony.");
+        level.addRoom("Boeing", "You decide to visit Boeing headquarters.", "Boeing HQ is in Florida, right?");
+        level.addRoom("FRC", "Congratulations! You made it to travel team! You are now going to the robotics competition.", "Destination:Deep Space was brought to you by the Boeing Company.");
+        level.addRoom("Awards Ceremony", "You can't leave competition until all of the trash is picked up.", "We're tired. We just wanna go back to the hotel.");
+        level.addRoom("Tesla", "You go to Tesla Headquarters in the hopes of meeting Elon Musk himself.", "Tesla HQ is in California, right?");
+        level.addRoom("Mars", "You find a car, and you drive it to Mars.", "The final resting place of Opportunity the Rover.");
 
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
@@ -20,12 +32,32 @@ public class Main {
         level.addUndirectedEdge("The Hub", "West Virginia");
         level.addUndirectedEdge("West Virginia", "Mountain Momma");
         level.addUndirectedEdge("McDonald's", "West Virginia");
+        level.addUndirectedEdge("The Ranch", "Glue Factory");
+        level.addDirectedEdge("Glue Factory", "Flex World");
+        level.addUndirectedEdge("Texas", "NASA");
+        level.addUndirectedEdge("The Hub", "Texas");
+        level.addDirectedEdge("NASA", "The Moon");
+        level.addUndirectedEdge("The Hub", "California");
+        level.addUndirectedEdge("The Hub", "Florida");
+        level.addUndirectedEdge("Florida", "Boeing");
+        level.addDirectedEdge("Boeing", "FRC");
+        level.addDirectedEdge("FRC", "Awards Ceremony");
+        level.addDirectedEdge("Awards Ceremony", "Boeing");
+        level.addUndirectedEdge("California", "Tesla");
+        level.addDirectedEdge("Tesla", "Mars");
 
         level.getRoom("The Ranch").addItem("Pewdiepie Chair", "Only $399!");
         level.getRoom("The Ranch").addItem("Ranch Dressing", "Who knew that they turned the \"Dorito's\" flavor into an actual sauce?");
         level.getRoom("West Virginia").addItem("Well of Immortality", "Life is old there, older than the trees.");
         level.getRoom("West Virginia").addItem("The Miner's Lady", "She's a stranger to blue water.");
         level.getRoom("McDonald's").addItem("The Biggest Mac", "You should probably talk to your doctor before eating this.");
+        level.getRoom("Texas").addItem("Redneck Repellent", "Are you tired of racist country truck-lovers chasing you? Well, you don't have to worry about that anymore with the new Redneck Repellent™!");
+        level.getRoom("Glue Factory").addItem("Glue", "Please do not sniff me.");
+        level.getRoom("Flex World").addItem("Flex Seal", "It gets the tough stains out!");
+        level.getRoom("NASA").addItem("Jet Feul", "Jet feul can't melt steel beams.");
+        level.getRoom("FRC").addItem("Gracious Professionalism", "You better not do the finger circle!");
+        level.getRoom("FRC").addItem("Pins", "You can never have enough pins.");
+        level.getRoom("Tesla").addItem("Bottle of Gasoline", "Whoever brought this into Tesla HQ is getting fired for sure.");
 
         Player player = new Player("Crayon", "Why does a player need a description?");
         player.setCurrentRoom(level.getRoom("The Hub"));
