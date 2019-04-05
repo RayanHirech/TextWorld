@@ -27,6 +27,9 @@ public class Main {
         level.addRoom("Mars", "You find a car, and you drive it to Mars.", "I hope you know how to get back.");
         level.addRoom("India", "You go to India.", "India is probably cool.");
         level.addRoom("T-Series", "You go to the headquarters of the most vile company on the planet, T-Series.", "T-Series ain't nothin' but a beach lasagna!");
+        level.addRoom("Bunny Coop", "You enter the Bunny Coop through the gate that someone left open.", "It's like a chicken coop, but it's for bunnies.");
+        level.addRoom("Fremont High School", "You try to go to Homestead High, but you end up in Fremont High instead.", "It's the one in Sunnyvale, gosh dang it.");
+        level.addRoom("Room A-214", "You are running late to Comp-Sci, so you run to Room A-214.", "Mr. Dobervich's class.");
 
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
@@ -49,6 +52,9 @@ public class Main {
         level.addDirectedEdge("Tesla", "Mars");
         level.addUndirectedEdge("The Hub", "India");
         level.addUndirectedEdge("India", "T-Series");
+        level.addUndirectedEdge("The Ranch", "Bunny Coop");
+        level.addUndirectedEdge("California", "Fremont High School");
+        level.addUndirectedEdge("Fremont High School", "Room A-214");
 
         level.getRoom("The Ranch").addItem("Pewdiepie Chair", "Only $399!");
         level.getRoom("The Ranch").addItem("Ranch Dressing", "Who knew that they turned the \"Dorito's\" flavor into an actual sauce?");
@@ -65,6 +71,8 @@ public class Main {
         level.getRoom("Awards Ceremony").addItem("Empty Water Bottles", "Did I pick up enough water bottles yet?");
         level.getRoom("Mars").addItem("Opportunity Rover", "If only you had some batteries...");
         level.getRoom("T-Series").addItem("Cease And Desist", "Why did they send one to Pewdiepie? (It's because they're idiots.)");
+        level.getRoom("Bunny Coop").addItem("Chicken Egg", "What is this doing in a bunny coop?");
+        level.getRoom("Room A-214").addItem("Mass And Spring System", "Wait... this exists? I thought it was just a legend.");
 
         Player player = new Player("Crayon", "Why does a player need a description?");
         player.setCurrentRoom(level.getRoom("The Hub"));
