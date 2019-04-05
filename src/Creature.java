@@ -17,6 +17,18 @@ public abstract class Creature {
         this.player = player;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Room getCurrentRoom() {
+        return this.currentRoom;
+    }
+
     public void move(Room nextRoom) {
         currentRoom = nextRoom;
     }
