@@ -16,7 +16,7 @@ public class Main {
         level.addRoom("Mountain Momma", "You take the country roads to Mountain Momma.", "West Virginia, but the redneck version.");
         level.addRoom("McDonald's", "You decide to spite your health and go to McDonald's.", "I'm lovin' it.");
         level.addRoom("Texas", "You took a wrong turn, and now you're in Texas.", "Everything is bigger in Texas.");
-        level.addRoom("Glue Factory", "You find a glue factory next to the ranch.", "So that's where the horses went...");
+        level.addRoom("Glue Factory", "You find a glue factory next to the ranch.", "So that's where all of the horses went...");
         level.addRoom("Flex World", "Phil Swift grabs you by the hand and takes you to Flex World.", "A glue lover's wet dream.");
         level.addRoom("NASA", "You go to NASA.", "Isn't NASA that government space thingy?");
         level.addRoom("Florida", "For some reason, you decide to go to Florida. It was probably an accident, because there is no reason that anyone would want to go there.", "Home of the weird Americans.");
@@ -32,13 +32,16 @@ public class Main {
         level.addRoom("Bunny Coop", "You enter the Bunny Coop through the gate that someone left open.", "It's like a chicken coop, but it's for bunnies.");
         level.addRoom("Fremont High School", "You try to go to Homestead High, but you end up in Fremont High instead.", "It's the one in Sunnyvale, gosh dang it.");
         level.addRoom("Room A-214", "You are running late to Comp-Sci, so you run to Room A-214.", "Mr. Dobervich's class.");
+        level.addRoom("Colorado", "", "");
+        level.addRoom("South Park", "", "");
+        level.addRoom("The Void", "Wait... how did you get here exactly?", "It's empty. What did you expect?");
 
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
         level.addDirectedEdge("Salvation", "The Hub");
         level.addUndirectedEdge("The Hub", "West Virginia");
         level.addUndirectedEdge("West Virginia", "Mountain Momma");
-        level.addUndirectedEdge("McDonald's", "West Virginia");
+        level.addUndirectedEdge("McDonald's", "Texas");
         level.addUndirectedEdge("The Ranch", "Glue Factory");
         level.addDirectedEdge("Glue Factory", "Flex World");
         level.addUndirectedEdge("Texas", "NASA");
@@ -57,6 +60,7 @@ public class Main {
         level.addUndirectedEdge("The Ranch", "Bunny Coop");
         level.addUndirectedEdge("California", "Fremont High School");
         level.addUndirectedEdge("Fremont High School", "Room A-214");
+        level.addDirectedEdge("Tesla", "The Void");
 
         level.getRoom("The Ranch").addItem("Pewdiepie Chair", "Only $399!");
         level.getRoom("The Ranch").addItem("Ranch Dressing", "Who knew that they turned the \"Dorito's\" flavor into an actual sauce?");
@@ -66,7 +70,6 @@ public class Main {
         level.getRoom("Texas").addItem("Redneck Repellent", "Are you tired of racist country truck-lovers chasing you? Well, you don't have to worry about that anymore with the new Redneck Repellent™!");
         level.getRoom("Glue Factory").addItem("Glue", "Please do not sniff me.");
         level.getRoom("Flex World").addItem("Flex Seal", "It gets the tough stains out!");
-        level.getRoom("NASA").addItem("Jet Feul", "Jet feul can't melt steel beams.");
         level.getRoom("FRC").addItem("Gracious Professionalism", "You better not do the finger circle!");
         level.getRoom("FRC").addItem("Pins", "You can never have enough pins.");
         level.getRoom("Tesla").addItem("Bottle of Gasoline", "Whoever brought this into Tesla HQ is getting fired for sure.");
@@ -75,15 +78,21 @@ public class Main {
         level.getRoom("T-Series").addItem("Cease And Desist", "Why did they send one to Pewdiepie? (It's because they're idiots.)");
         level.getRoom("Bunny Coop").addItem("Chicken Egg", "What is this doing in a bunny coop?");
         level.getRoom("Room A-214").addItem("Mass And Spring System", "Wait... this exists? I thought it was just a legend.");
+        level.getRoom("The Void").addItem("Reverse Card", "The ancient artifact of the No U clan. It is said that the wielder of this artifact can instantly reflect any attack.");
 
         Player player = new Player("Crayon", "Why does a player need a description?");
         player.setCurrentRoom(level.getRoom("The Hub"));
 
-        ArrayList<Creature> creatures = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Bunny b = new Bunny(player);
             b.move(level.getRoom("Bunny Coop"));
-            creatures.add(b);
+            level.addCreature(b);
+        }
+        for (int i = 0; i < 2; i++) {
+            Wumpus w = new Wumpus(player);
+            w.move(level.getRoom("The Hub"));
+            w.act();
+            level.addCreature(w);
         }
 
         String response = "";
@@ -203,7 +212,7 @@ public class Main {
             }
 
             if (moveCreatures) {
-                for (Creature c : creatures) {
+                for (Creature c : level.getCreatures()) {
                     c.act();
                 }
             }
