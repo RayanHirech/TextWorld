@@ -24,7 +24,9 @@ public class Main {
         level.addRoom("FRC", "Congratulations! You made it to travel team! You are now going to the robotics competition.", "Destination:Deep Space was brought to you by the Boeing Company.");
         level.addRoom("Awards Ceremony", "You can't leave competition until all of the trash is picked up.", "We're tired. We just wanna go back to the hotel.");
         level.addRoom("Tesla", "You go to Tesla Headquarters in the hopes of meeting Elon Musk himself.", "Tesla HQ is in California, right?");
-        level.addRoom("Mars", "You find a car, and you drive it to Mars.", "The final resting place of Opportunity the Rover.");
+        level.addRoom("Mars", "You find a car, and you drive it to Mars.", "I hope you know how to get back.");
+        level.addRoom("India", "You go to India.", "India is probably cool.");
+        level.addRoom("T-Series", "You go to the headquarters of the most vile company on the planet, T-Series.", "T-Series ain't nothin' but a beach lasagna!");
 
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
@@ -45,6 +47,8 @@ public class Main {
         level.addDirectedEdge("Awards Ceremony", "Boeing");
         level.addUndirectedEdge("California", "Tesla");
         level.addDirectedEdge("Tesla", "Mars");
+        level.addUndirectedEdge("The Hub", "India");
+        level.addUndirectedEdge("India", "T-Series");
 
         level.getRoom("The Ranch").addItem("Pewdiepie Chair", "Only $399!");
         level.getRoom("The Ranch").addItem("Ranch Dressing", "Who knew that they turned the \"Dorito's\" flavor into an actual sauce?");
@@ -58,6 +62,9 @@ public class Main {
         level.getRoom("FRC").addItem("Gracious Professionalism", "You better not do the finger circle!");
         level.getRoom("FRC").addItem("Pins", "You can never have enough pins.");
         level.getRoom("Tesla").addItem("Bottle of Gasoline", "Whoever brought this into Tesla HQ is getting fired for sure.");
+        level.getRoom("Awards Ceremony").addItem("Empty Water Bottles", "Did I pick up enough water bottles yet?");
+        level.getRoom("Mars").addItem("Opportunity Rover", "If only you had some batteries...");
+        level.getRoom("T-Series").addItem("Cease And Desist", "Why did they send one to Pewdiepie? (It's because they're idiots.)");
 
         Player player = new Player("Crayon", "Why does a player need a description?");
         player.setCurrentRoom(level.getRoom("The Hub"));
