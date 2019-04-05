@@ -47,7 +47,7 @@ public void addNeighbor(Room neighbor) {
 
 public String getNeighborNamesAndDescriptions() {
         if (neighbors.size() <= 0) {
-        return "nowhere";
+        return "no neighboring roomss";
         }
         String output = "Neighboring Rooms:\n";
         for (String name : neighbors.keySet()) {
@@ -67,6 +67,17 @@ public String getItemNamesAndDescriptions() {
         return output;
         }
 
+    public String getCreatureNamesAndDescriptions() {
+        if (items.size() <= 0) {
+            return "no creatures";
+        }
+        String output = "Creatures in " + getName() + ":\n";
+        for (int i = 0; i < creatures.size(); i++) {
+            output += "\t" + creatures.get(i).getName() + ": " + creatures.get(i).getDescription() + "\n";
+        }
+        return output;
+    }
+
 public Room getNeighbor(String name) {
         for (String str : neighbors.keySet()) {
         if (str.equals(name)) {
@@ -80,13 +91,6 @@ public Room getNeighbor(String name) {
         return creatures;
     }
 
-    public void displayCreatures() {
-        System.out.println("Creatures in the room:");
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println("\t" + creatures.get(i).getName());
-        }
-    }
-
     public void addCreature(Creature creature) {
         creatures.add(creature);
     }
@@ -97,13 +101,6 @@ public Room getNeighbor(String name) {
 
 public ArrayList<Item> getItems() {
         return items;
-        }
-
-public void displayItems() {
-        System.out.println("Items in the room:");
-        for (int i = 0; i < items.size(); i++) {
-        System.out.println("\t" + items.get(i).getName());
-        }
         }
 
 public void addItem(String name) {

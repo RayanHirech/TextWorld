@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -6,6 +7,7 @@ public class Main {
 
         String gamemode = ""; //Set default gamemode here
         Level level = new Level();
+        boolean moveCreatures = false;
 
         level.addRoom("The Hub", "You are going to the Hub.", "The center of the universe.");
         level.addRoom("The Ranch", "You have been sent to the ranch.", "The perfect place to store disrespectful teenagers.");
@@ -77,6 +79,13 @@ public class Main {
         Player player = new Player("Crayon", "Why does a player need a description?");
         player.setCurrentRoom(level.getRoom("The Hub"));
 
+        ArrayList<Creature> creatures = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            Bunny b = new Bunny(player);
+            b.move(level.getRoom("Bunny Coop"));
+            creatures.add(b);
+        }
+
         String response = "";
         Scanner in = new Scanner(System.in);
 
@@ -89,6 +98,7 @@ public class Main {
 
             if (words[0].equals("gamemode")) {
                 gamemode = words[1];
+                moveCreatures = false;
             } else if (words[0].equals("go")) {
                 String name = "";
                 int firstQuote = response.indexOf("\"");
@@ -102,9 +112,12 @@ public class Main {
 
                     player.setCurrentRoom(nextRoom);
                 }
+                moveCreatures = true;
             } else if (words[0].equals("look")) {
                 System.out.println(player.getCurrentRoom().getNeighborNamesAndDescriptions());
                 System.out.println(player.getCurrentRoom().getItemNamesAndDescriptions());
+                System.out.println(player.getCurrentRoom().getCreatureNamesAndDescriptions());
+                moveCreatures = false;
             } else if (words[0].equals("add")) {
                 String name = "";
                 int firstQuote = response.indexOf("\"");
@@ -127,6 +140,7 @@ public class Main {
                 } else {
                     System.out.println("I'm sorry, I don't recognize that command.");
                 }
+                moveCreatures = true;
             } else if (words[0].equals("take")) {
                 String itemName = "";
                 int firstQuote = response.indexOf("\"");
@@ -138,6 +152,7 @@ public class Main {
                 } else {
                     System.out.println("That item does not exist in this room.");
                 }
+                moveCreatures = false;
             } else if (words[0].equals("drop")) {
                 String itemName = "";
                 int firstQuote = response.indexOf("\"");
@@ -149,24 +164,26 @@ public class Main {
                 } else {
                     System.out.println("You do not have this item.");
                 }
+                moveCreatures = false;
             } else if (words[0].equals("trade")) {
-                String itemName;
-                int firstQuote = response.indexOf("\"");
-                int secondQuote = response.indexOf("\"", firstQuote + 1);
-                itemName = response.substring(firstQuote + 1, secondQuote);
-                String currencyName = "";
-                firstQuote = response.indexOf("\"", secondQuote + 1);
-                secondQuote = response.indexOf("\"", firstQuote + 1);
-                currencyName += response.substring(firstQuote + 1, secondQuote);
-                if (player.hasItem(currencyName)) {
-                    player.addItem(player.getCurrentRoom().removeItem(itemName));
-                    player.destroyItem(currencyName);
-                    System.out.println("You have taken the " + itemName + " in exchange for " + currencyName + ".");
-                } else if (player.getCurrentRoom().getItemIndex(itemName) == -1) {
-                    System.out.println(itemName + " does not exist in this room.");
-                } else {
-                    System.out.println("To get " + itemName + ", you need " + currencyName + ".");
-                }
+//                String itemName;
+//                int firstQuote = response.indexOf("\"");
+//                int secondQuote = response.indexOf("\"", firstQuote + 1);
+//                itemName = response.substring(firstQuote + 1, secondQuote);
+//                String currencyName = "";
+//                firstQuote = response.indexOf("\"", secondQuote + 1);
+//                secondQuote = response.indexOf("\"", firstQuote + 1);
+//                currencyName += response.substring(firstQuote + 1, secondQuote);
+//                if (player.hasItem(currencyName)) {
+//                    player.addItem(player.getCurrentRoom().removeItem(itemName));
+//                    player.destroyItem(currencyName);
+//                    System.out.println("You have taken the " + itemName + " in exchange for " + currencyName + ".");
+//                } else if (player.getCurrentRoom().getItemIndex(itemName) == -1) {
+//                    System.out.println(itemName + " does not exist in this room.");
+//                } else {
+//                    System.out.println("To get " + itemName + ", you need " + currencyName + ".");
+//                }
+//                moveCreatures = false;
             } else if (words[0].equals("unlock")) {
                 // Implement this at some point
             } else if (!response.equals("quit")) {
@@ -182,6 +199,13 @@ public class Main {
                 System.out.println("\t\"unlock <roomname(in quotes)> <unlockitemname(in quotes)>\": Unlock a locked room using an item as a key.");
                 System.out.println("\t\"craft ");
                 System.out.println("\t\"quit\": Quit game.");
+                moveCreatures = false;
+            }
+
+            if (moveCreatures) {
+                for (Creature c : creatures) {
+                    c.act();
+                }
             }
 
             System.out.println();
