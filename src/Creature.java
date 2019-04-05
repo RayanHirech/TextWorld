@@ -30,7 +30,9 @@ public abstract class Creature {
     }
 
     public void move(Room nextRoom) {
-        currentRoom.removeCreature(this);
+        if (currentRoom != null) {
+            currentRoom.removeCreature(this);
+        }
         currentRoom = nextRoom;
         nextRoom.addCreature(this);
     }
