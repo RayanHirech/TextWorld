@@ -12,18 +12,20 @@ public class Main {
         level.addRoom("Salvation", "Your time in the ranch has led you to salvation.", "Your life is now better because of Dr. Phil. Your welcome.");
         level.addRoom("West Virginia", "You have been taken home, to the place you belong: West Virginia.", "One of the states in the US.");
         level.addRoom("Mountain Momma", "You take the country roads to Mountain Momma.", "West Virginia, but the redneck version.");
-        level.addRoom("", "", "");
+        level.addRoom("McDonald's", "You decide to spite your health and go to McDonald's.", "I'm lovin' it.");
 
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
         level.addDirectedEdge("Salvation", "The Hub");
         level.addUndirectedEdge("The Hub", "West Virginia");
         level.addUndirectedEdge("West Virginia", "Mountain Momma");
+        level.addUndirectedEdge("McDonald's", "West Virginia");
 
         level.getRoom("The Ranch").addItem("Pewdiepie Chair", "Only $399!");
         level.getRoom("The Ranch").addItem("Ranch Dressing", "Who knew that they turned the \"Dorito's\" flavor into an actual sauce?");
         level.getRoom("West Virginia").addItem("Well of Immortality", "Life is old there, older than the trees.");
         level.getRoom("West Virginia").addItem("The Miner's Lady", "She's a stranger to blue water.");
+        level.getRoom("McDonald's").addItem("The Biggest Mac", "You should probably talk to your doctor before eating this.");
 
         Player player = new Player("Crayon", "Why does a player need a description?");
         player.setCurrentRoom(level.getRoom("The Hub"));
