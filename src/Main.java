@@ -31,6 +31,7 @@ public class Main {
         level.addRoom("China", "China", "China");
         level.addRoom("Tiananmen Square", "You go to Tiananmen Square.", "No massacre of any kind has happened here.");
         level.addRoom("Prison", "You go to prison for reenacting the Tiananmen Square Massacre.", "You're not getting out of here anytime soon.");
+        level.addRoom("Airport" , "You go to the airport.", "Wow there are planes here.");
         
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
@@ -48,13 +49,14 @@ public class Main {
         level.addUndirectedEdge("USA", "Florida");
         level.addUndirectedEdge("Florida", "Boeing");
         level.addDirectedEdge("Boeing", "FRC");
+        level.addUndirectedEdge("Boeing", "Airport"); //You can't enter if you have water in your inventory
         level.addDirectedEdge("FRC", "Awards Ceremony");
         level.addDirectedEdge("Awards Ceremony", "Boeing");
         level.addUndirectedEdge("California", "Tesla");
         level.addDirectedEdge("Tesla", "Mars");
-        level.addUndirectedEdge("The Hub", "India");
+        level.addUndirectedEdge("Airport", "India");
         level.addUndirectedEdge("India", "T-Series");
-        level.addUndirectedEdge("The Hub", "China");
+        level.addUndirectedEdge("Airport", "China");
         level.addUndirectedEdge("China", "Tiananmen Square");
         level.addDirectedEdge("Tiananmen Square", "Prison");
 
