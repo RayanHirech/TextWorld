@@ -27,20 +27,25 @@ public class Main {
         level.addRoom("Mars", "You find a car, and you drive it to Mars.", "I hope you know how to get back.");
         level.addRoom("India", "You go to India.", "India is probably cool.");
         level.addRoom("T-Series", "You go to the headquarters of the most vile company on the planet, T-Series.", "T-Series ain't nothin' but a beach lasagna!");
-
+        level.addRoom("USA", "You go to America.", "And I'm proud to be an American, where at least I know I'm free.");
+        level.addRoom("China", "China", "China");
+        level.addRoom("Tiananmen Square", "You go to Tiananmen Square.", "No massacre of any kind has happened here.");
+        level.addRoom("Prison", "You go to prison for reenacting the Tiananmen Square Massacre.", "You're not getting out of here anytime soon.");
+        
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
         level.addDirectedEdge("Salvation", "The Hub");
-        level.addUndirectedEdge("The Hub", "West Virginia");
+        level.addUndirectedEdge("The Hub", "USA");
+        level.addUndirectedEdge("USA", "West Virginia");
         level.addUndirectedEdge("West Virginia", "Mountain Momma");
-        level.addUndirectedEdge("McDonald's", "West Virginia");
+        level.addUndirectedEdge("McDonald's", "Texas");
         level.addUndirectedEdge("The Ranch", "Glue Factory");
         level.addDirectedEdge("Glue Factory", "Flex World");
         level.addUndirectedEdge("Texas", "NASA");
-        level.addUndirectedEdge("The Hub", "Texas");
+        level.addUndirectedEdge("USA", "Texas");
         level.addDirectedEdge("NASA", "The Moon");
-        level.addUndirectedEdge("The Hub", "California");
-        level.addUndirectedEdge("The Hub", "Florida");
+        level.addUndirectedEdge("USA", "California");
+        level.addUndirectedEdge("USA", "Florida");
         level.addUndirectedEdge("Florida", "Boeing");
         level.addDirectedEdge("Boeing", "FRC");
         level.addDirectedEdge("FRC", "Awards Ceremony");
@@ -49,6 +54,9 @@ public class Main {
         level.addDirectedEdge("Tesla", "Mars");
         level.addUndirectedEdge("The Hub", "India");
         level.addUndirectedEdge("India", "T-Series");
+        level.addUndirectedEdge("The Hub", "China");
+        level.addUndirectedEdge("China", "Tiananmen Square");
+        level.addDirectedEdge("Tiananmen Square", "Prison");
 
         level.getRoom("The Ranch").addItem("Pewdiepie Chair", "Only $399!");
         level.getRoom("The Ranch").addItem("Ranch Dressing", "Who knew that they turned the \"Dorito's\" flavor into an actual sauce?");
