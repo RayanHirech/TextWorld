@@ -43,4 +43,8 @@ public abstract class Creature {
         return currentRoom.getRandomNeighbor();
     }
 
+    public Room playerIsWithin2Rooms() { //TODO do this
+        return null;
+    }
+
 }
