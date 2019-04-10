@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +6,6 @@ public class Main {
 
         String gamemode = ""; //Set default gamemode here
         Level level = new Level();
-        boolean moveCreatures = false;
 
         level.addRoom("The Hub", "You are going to the Hub.", "The center of the universe.");
         level.addRoom("The Ranch", "You have been sent to the ranch.", "The perfect place to store disrespectful teenagers.");
@@ -16,7 +14,7 @@ public class Main {
         level.addRoom("Mountain Momma", "You take the country roads to Mountain Momma.", "West Virginia, but the redneck version.");
         level.addRoom("McDonald's", "You decide to spite your health and go to McDonald's.", "I'm lovin' it.");
         level.addRoom("Texas", "You took a wrong turn, and now you're in Texas.", "Everything is bigger in Texas.");
-        level.addRoom("Glue Factory", "You find a glue factory next to the ranch.", "So that's where all of the horses went...");
+        level.addRoom("Glue Factory", "You find a glue factory next to the ranch.", "So that's where the horses went...");
         level.addRoom("Flex World", "Phil Swift grabs you by the hand and takes you to Flex World.", "A glue lover's wet dream.");
         level.addRoom("NASA", "You go to NASA.", "Isn't NASA that government space thingy?");
         level.addRoom("Florida", "For some reason, you decide to go to Florida. It was probably an accident, because there is no reason that anyone would want to go there.", "Home of the weird Americans.");
@@ -29,38 +27,38 @@ public class Main {
         level.addRoom("Mars", "You find a car, and you drive it to Mars.", "I hope you know how to get back.");
         level.addRoom("India", "You go to India.", "India is probably cool.");
         level.addRoom("T-Series", "You go to the headquarters of the most vile company on the planet, T-Series.", "T-Series ain't nothin' but a beach lasagna!");
-        level.addRoom("Bunny Coop", "You enter the Bunny Coop through the gate that someone left open.", "It's like a chicken coop, but it's for bunnies.");
-        level.addRoom("Fremont High School", "You try to go to Homestead High, but you end up in Fremont High instead.", "It's the one in Sunnyvale, gosh dang it.");
-        level.addRoom("Room A-214", "You are running late to Comp-Sci, so you run to Room A-214.", "Mr. Dobervich's class.");
-        level.addRoom("Colorado", "", "");
-        level.addRoom("South Park", "", "");
-        level.addRoom("The Void", "Wait... how did you get here exactly?", "It's empty. What did you expect?");
-
+        level.addRoom("USA", "You go to America.", "And I'm proud to be an American, where at least I know I'm free.");
+        level.addRoom("China", "China", "China");
+        level.addRoom("Tiananmen Square", "You go to Tiananmen Square.", "No massacre of any kind has happened here.");
+        level.addRoom("Prison", "You go to prison for reenacting the Tiananmen Square Massacre.", "You're not getting out of here anytime soon.");
+        level.addRoom("Airport" , "You go to the airport.", "Wow there are planes here.");
+        
         level.addDirectedEdge("The Hub", "The Ranch");
         level.addDirectedEdge("The Ranch", "Salvation");
         level.addDirectedEdge("Salvation", "The Hub");
-        level.addUndirectedEdge("The Hub", "West Virginia");
+        level.addUndirectedEdge("The Hub", "USA");
+        level.addUndirectedEdge("USA", "West Virginia");
         level.addUndirectedEdge("West Virginia", "Mountain Momma");
         level.addUndirectedEdge("McDonald's", "Texas");
         level.addUndirectedEdge("The Ranch", "Glue Factory");
         level.addDirectedEdge("Glue Factory", "Flex World");
         level.addUndirectedEdge("Texas", "NASA");
-        level.addUndirectedEdge("The Hub", "Texas");
+        level.addUndirectedEdge("USA", "Texas");
         level.addDirectedEdge("NASA", "The Moon");
-        level.addUndirectedEdge("The Hub", "California");
-        level.addUndirectedEdge("The Hub", "Florida");
+        level.addUndirectedEdge("USA", "California");
+        level.addUndirectedEdge("USA", "Florida");
         level.addUndirectedEdge("Florida", "Boeing");
         level.addDirectedEdge("Boeing", "FRC");
+        level.addUndirectedEdge("Boeing", "Airport"); //You can't enter if you have water in your inventory
         level.addDirectedEdge("FRC", "Awards Ceremony");
         level.addDirectedEdge("Awards Ceremony", "Boeing");
         level.addUndirectedEdge("California", "Tesla");
         level.addDirectedEdge("Tesla", "Mars");
-        level.addUndirectedEdge("The Hub", "India");
+        level.addUndirectedEdge("Airport", "India");
         level.addUndirectedEdge("India", "T-Series");
-        level.addUndirectedEdge("The Ranch", "Bunny Coop");
-        level.addUndirectedEdge("California", "Fremont High School");
-        level.addUndirectedEdge("Fremont High School", "Room A-214");
-        level.addDirectedEdge("Tesla", "The Void");
+        level.addUndirectedEdge("Airport", "China");
+        level.addUndirectedEdge("China", "Tiananmen Square");
+        level.addDirectedEdge("Tiananmen Square", "Prison");
 
         level.getRoom("The Ranch").addItem("Pewdiepie Chair", "Only $399!");
         level.getRoom("The Ranch").addItem("Ranch Dressing", "Who knew that they turned the \"Dorito's\" flavor into an actual sauce?");
@@ -70,30 +68,16 @@ public class Main {
         level.getRoom("Texas").addItem("Redneck Repellent", "Are you tired of racist country truck-lovers chasing you? Well, you don't have to worry about that anymore with the new Redneck Repellent™!");
         level.getRoom("Glue Factory").addItem("Glue", "Please do not sniff me.");
         level.getRoom("Flex World").addItem("Flex Seal", "It gets the tough stains out!");
+        level.getRoom("NASA").addItem("Jet Feul", "Jet feul can't melt steel beams.");
         level.getRoom("FRC").addItem("Gracious Professionalism", "You better not do the finger circle!");
         level.getRoom("FRC").addItem("Pins", "You can never have enough pins.");
         level.getRoom("Tesla").addItem("Bottle of Gasoline", "Whoever brought this into Tesla HQ is getting fired for sure.");
         level.getRoom("Awards Ceremony").addItem("Empty Water Bottles", "Did I pick up enough water bottles yet?");
         level.getRoom("Mars").addItem("Opportunity Rover", "If only you had some batteries...");
         level.getRoom("T-Series").addItem("Cease And Desist", "Why did they send one to Pewdiepie? (It's because they're idiots.)");
-        level.getRoom("Bunny Coop").addItem("Chicken Egg", "What is this doing in a bunny coop?");
-        level.getRoom("Room A-214").addItem("Mass And Spring System", "Wait... this exists? I thought it was just a legend.");
-        level.getRoom("The Void").addItem("Reverse Card", "The ancient artifact of the No U clan. It is said that the wielder of this artifact can instantly reflect any attack.");
 
         Player player = new Player("Crayon", "Why does a player need a description?");
         player.setCurrentRoom(level.getRoom("The Hub"));
-
-        for (int i = 0; i < 10; i++) {
-            Bunny b = new Bunny(player);
-            b.move(level.getRoom("Bunny Coop"));
-            level.addCreature(b);
-        }
-        for (int i = 0; i < 2; i++) {
-            Wumpus w = new Wumpus(player);
-            w.move(level.getRoom("The Hub"));
-            w.act();
-            level.addCreature(w);
-        }
 
         String response = "";
         Scanner in = new Scanner(System.in);
@@ -107,7 +91,6 @@ public class Main {
 
             if (words[0].equals("gamemode")) {
                 gamemode = words[1];
-                moveCreatures = false;
             } else if (words[0].equals("go")) {
                 String name = "";
                 int firstQuote = response.indexOf("\"");
@@ -121,12 +104,9 @@ public class Main {
 
                     player.setCurrentRoom(nextRoom);
                 }
-                moveCreatures = true;
             } else if (words[0].equals("look")) {
                 System.out.println(player.getCurrentRoom().getNeighborNamesAndDescriptions());
                 System.out.println(player.getCurrentRoom().getItemNamesAndDescriptions());
-                System.out.println(player.getCurrentRoom().getCreatureNamesAndDescriptions());
-                moveCreatures = false;
             } else if (words[0].equals("add")) {
                 String name = "";
                 int firstQuote = response.indexOf("\"");
@@ -149,7 +129,6 @@ public class Main {
                 } else {
                     System.out.println("I'm sorry, I don't recognize that command.");
                 }
-                moveCreatures = true;
             } else if (words[0].equals("take")) {
                 String itemName = "";
                 int firstQuote = response.indexOf("\"");
@@ -161,7 +140,6 @@ public class Main {
                 } else {
                     System.out.println("That item does not exist in this room.");
                 }
-                moveCreatures = false;
             } else if (words[0].equals("drop")) {
                 String itemName = "";
                 int firstQuote = response.indexOf("\"");
@@ -173,26 +151,24 @@ public class Main {
                 } else {
                     System.out.println("You do not have this item.");
                 }
-                moveCreatures = false;
             } else if (words[0].equals("trade")) {
-//                String itemName;
-//                int firstQuote = response.indexOf("\"");
-//                int secondQuote = response.indexOf("\"", firstQuote + 1);
-//                itemName = response.substring(firstQuote + 1, secondQuote);
-//                String currencyName = "";
-//                firstQuote = response.indexOf("\"", secondQuote + 1);
-//                secondQuote = response.indexOf("\"", firstQuote + 1);
-//                currencyName += response.substring(firstQuote + 1, secondQuote);
-//                if (player.hasItem(currencyName)) {
-//                    player.addItem(player.getCurrentRoom().removeItem(itemName));
-//                    player.destroyItem(currencyName);
-//                    System.out.println("You have taken the " + itemName + " in exchange for " + currencyName + ".");
-//                } else if (player.getCurrentRoom().getItemIndex(itemName) == -1) {
-//                    System.out.println(itemName + " does not exist in this room.");
-//                } else {
-//                    System.out.println("To get " + itemName + ", you need " + currencyName + ".");
-//                }
-//                moveCreatures = false;
+                String itemName;
+                int firstQuote = response.indexOf("\"");
+                int secondQuote = response.indexOf("\"", firstQuote + 1);
+                itemName = response.substring(firstQuote + 1, secondQuote);
+                String currencyName = "";
+                firstQuote = response.indexOf("\"", secondQuote + 1);
+                secondQuote = response.indexOf("\"", firstQuote + 1);
+                currencyName += response.substring(firstQuote + 1, secondQuote);
+                if (player.hasItem(currencyName)) {
+                    player.addItem(player.getCurrentRoom().removeItem(itemName));
+                    player.destroyItem(currencyName);
+                    System.out.println("You have taken the " + itemName + " in exchange for " + currencyName + ".");
+                } else if (player.getCurrentRoom().getItemIndex(itemName) == -1) {
+                    System.out.println(itemName + " does not exist in this room.");
+                } else {
+                    System.out.println("To get " + itemName + ", you need " + currencyName + ".");
+                }
             } else if (words[0].equals("unlock")) {
                 // Implement this at some point
             } else if (!response.equals("quit")) {
@@ -208,13 +184,6 @@ public class Main {
                 System.out.println("\t\"unlock <roomname(in quotes)> <unlockitemname(in quotes)>\": Unlock a locked room using an item as a key.");
                 System.out.println("\t\"craft ");
                 System.out.println("\t\"quit\": Quit game.");
-                moveCreatures = false;
-            }
-
-            if (moveCreatures) {
-                for (Creature c : level.getCreatures()) {
-                    c.act();
-                }
             }
 
             System.out.println();
