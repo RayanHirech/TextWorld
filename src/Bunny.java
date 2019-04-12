@@ -11,7 +11,7 @@ public class Bunny extends Creature {
 
     private String getRandomName() {
         int rand = (int)(Math.random() * names.length);
-        return names[rand] + "the Bunny";
+        return names[rand] + " the Bunny";
     }
 
     public void act() {
