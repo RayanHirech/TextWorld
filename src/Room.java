@@ -37,8 +37,11 @@ public String getDescription() {
 
     public Room getRandomNeighbor() {
         ArrayList<Room> rooms = new ArrayList<>(neighbors.values());
-        int roomIndex = (int)(Math.random() * rooms.size());
-        return rooms.get(roomIndex);
+        if (rooms.size() != 0) {
+            int roomIndex = (int) (Math.random() * rooms.size());
+            return rooms.get(roomIndex);
+        }
+        return null;
     }
 
 public void addNeighbor(Room neighbor) {

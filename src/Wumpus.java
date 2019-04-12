@@ -5,31 +5,21 @@ public class Wumpus extends Creature {
     }
 
     public void act() {
-        Room nextRoom;
-        int counter =0;
-        do {
-            nextRoom = randomizeRoom();
-            counter++;
-            if (counter >= 10) {
-                nextRoom = currentRoom;
-                break;
-            }
-        } while (nextRoom.equals(player.getCurrentRoom()));
-        move(nextRoom);
+        runAway();
     }
 
     public void runAway() {
-        Room nextRoom;
-        int counter = 0;
-        do {
-            nextRoom = randomizeRoom();
-            counter++;
-            if (counter >= 15) {
-                nextRoom = currentRoom;
-                break;
-            }
-        } while (nextRoom.equals(player.getCurrentRoom()) || isPlayerInNeighbors(nextRoom));
-        move(nextRoom);
+//        Room nextRoom;
+//        int counter = 0;
+//        do {
+//            nextRoom = randomizeRoom();
+//            counter++;
+//            if (counter >= 15) {
+//                nextRoom = currentRoom;
+//                break;
+//            }
+//        } while (nextRoom.equals(player.getCurrentRoom()) || isPlayerInNeighbors(nextRoom));
+//        move(nextRoom);
     }
 
 }
