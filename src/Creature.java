@@ -47,8 +47,14 @@ public abstract class Creature {
         return currentRoom.getRandomNeighbor();
     }
 
-    public Room playerIsWithin2Rooms() { //TODO do this
-        return null;
+    public boolean isPlayerInNeighbors(Room room) {
+        HashMap<String, Room> neighbors = room.getNeighbors();
+        for (String name : neighbors.keySet()) {
+            if (player.getCurrentRoom().equals(neighbors.get(name))) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

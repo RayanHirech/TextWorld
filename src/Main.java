@@ -88,6 +88,12 @@ public class Main {
             b.move(level.getRoom("Bunny Coop"));
             creatures.add(b);
         }
+        for (int i = 0; i < 10; i++) {
+            Wumpus bartholomew = new Wumpus(player);
+            bartholomew.move(level.getRoom("The Hub"));
+            bartholomew.act();
+            creatures.add(bartholomew);
+        }
 
         String response = "";
         Scanner in = new Scanner(System.in);

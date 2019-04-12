@@ -18,4 +18,18 @@ public class Wumpus extends Creature {
         move(nextRoom);
     }
 
+    public void runAway() {
+        Room nextRoom;
+        int counter = 0;
+        do {
+            nextRoom = randomizeRoom();
+            counter++;
+            if (counter >= 15) {
+                nextRoom = currentRoom;
+                break;
+            }
+        } while (nextRoom.equals(player.getCurrentRoom()) || isPlayerInNeighbors(nextRoom));
+        move(nextRoom);
+    }
+
 }
