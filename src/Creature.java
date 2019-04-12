@@ -29,6 +29,10 @@ public abstract class Creature {
         return this.currentRoom;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void move(Room nextRoom) {
         if (currentRoom != null) {
             currentRoom.removeCreature(this);
