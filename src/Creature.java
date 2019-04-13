@@ -17,14 +17,44 @@ public abstract class Creature {
         this.player = player;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Room getCurrentRoom() {
+        return this.currentRoom;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void move(Room nextRoom) {
+        if (currentRoom != null) {
+            currentRoom.removeCreature(this);
+        }
         currentRoom = nextRoom;
+        nextRoom.addCreature(this);
     }
 
     public abstract void act();
 
     public Room randomizeRoom() {
         return currentRoom.getRandomNeighbor();
+    }
+
+    public boolean isPlayerInNeighbors(Room room) {
+        HashMap<String, Room> neighbors = room.getNeighbors();
+        for (String name : neighbors.keySet()) {
+            if (player.getCurrentRoom().equals(neighbors.get(name))) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

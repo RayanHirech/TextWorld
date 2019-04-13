@@ -4,9 +4,19 @@ import java.util.HashMap;
 public class Level {
 
     private HashMap<String, Room> nodes;
+    private ArrayList<Creature> creatures;
 
     public Level() {
         nodes = new HashMap<>();
+        creatures = new ArrayList<>();
+    }
+
+    public void addCreature(Creature c) {
+        creatures.add(c);
+    }
+
+    public ArrayList<Creature> getCreatures() {
+        return this.creatures;
     }
 
     public void addRoom(String name, String travelMessage, String description) {
