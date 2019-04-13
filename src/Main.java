@@ -32,7 +32,7 @@ public class Main {
         level.addRoom("China", "China", "China");
         level.addRoom("Tiananmen Square", "You go to Tiananmen Square.", "No massacre of any kind has happened here.");
         level.addRoom("Prison", "You go to prison for reenacting the Tiananmen Square Massacre.", "You're not getting out of here anytime soon.");
-        level.addRoom("Airport" , "You go to the Airport.", "Wow,    there are planes here.");
+        level.addRoom("Airport" , "You go to the Airport.", "Wow, there are planes here.");
         level.addRoom("Bunny Coop", "You go to the Bunny Coop.", "It's like a chicken coop, but for bunnies.");
 
         level.addDirectedEdge("The Hub", "The Ranch");
